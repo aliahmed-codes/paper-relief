@@ -1,8 +1,7 @@
-canvas#ground.ground
-canvas#relief.relief
+canvas#stage.stage
 
 header.nav
-  a.nav__logo(href="/") Folio
+  a.nav__logo(href="/") Folio.
   nav.nav__links
     a(href="#work") Work
     a(href="#notes") Notes
@@ -15,37 +14,40 @@ main.page
       | Move your cursor.
       br
       | Crease the page.
-    p.hero__lead A flat page with folds and crumples hiding underneath. Wherever the pointer passes, the paper lifts and catches the light.
+    p.hero__lead Folds and crumples are hiding under this page. Wherever the pointer passes, the paper lifts, bends the words and catches the light.
+    .band(data-warp)
 
   section.panel#work
     p.eyebrow 01 — Work
     h2 Quiet layouts, loud surfaces
     .cards
       article.card
+        span.card__index 01
         h3 Atlas
         p Editorial site for a printing studio.
       article.card
+        span.card__index 02
         h3 Fold
         p Packaging identity and web launch.
       article.card
+        span.card__index 03
         h3 Grain
         p Motion system for a paper brand.
 
-  section.band
-    p Everything here is real DOM text. The relief is a single WebGL layer blended on top.
+  .seam(data-warp)
 
   section.panel#notes
     p.eyebrow 02 — Notes
     h2 How it works
     ul.list
-      li A trail canvas records where the pointer has been and fades it out.
-      li A fragment shader builds fold lines and crumples as a height field.
-      li Finite differences give a normal, a light turns it into shading.
-      li The shading is multiplied by the trail, so it only shows where you touched.
+      li The whole page is drawn into a texture once.
+      li A trail records where the pointer has been and fades it out.
+      li A fragment shader builds folds and crumples as a height field.
+      li Its normals bend the page texture and light it, only where the trail is.
 
   section.panel#contact
     p.eyebrow 03 — Contact
     h2 Say hello
     a.mail(href="mailto:hello@example.com") hello@example.com
 
-include ../includes/footer.pug
+  include ../includes/footer.pug
