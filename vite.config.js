@@ -29,7 +29,7 @@ export default defineConfig({
     outDir: "dist",
     rollupOptions: {
       input: {
-        home: resolve(__dirname, "index.html"),
+        home: resolve(import.meta.dirname, "index.html"),
       },
     },
   },
