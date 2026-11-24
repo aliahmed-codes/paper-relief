@@ -17,10 +17,11 @@ uniform float uLift;
 
 out vec4 outColor;
 
-const vec3 LIGHT = normalize(vec3(1.0, 2.0, 1.0));
-const vec3 GROUND = vec3(0.988, 0.980, 0.961);
-const vec3 BLACK = vec3(0.059, 0.055, 0.047);
-const vec3 ORCHID = vec3(0.882, 0.329, 1.0);
+const vec3 LIGHT = normalize(vec3(-1.0, 1.6, 1.0));
+const vec3 GROUND = vec3(0.937, 0.902, 0.827);
+const vec3 INK = vec3(0.078, 0.129, 0.239);
+const vec3 VERMILION = vec3(0.902, 0.231, 0.180);
+const vec3 MUSTARD = vec3(0.949, 0.694, 0.204);
 
 const float DISTORTION = 0.25;
 const float SWIRL = 0.8;
@@ -79,12 +80,12 @@ vec3 warp(vec2 doc, vec4 rect) {
     uv.y += SWIRL / fi * cos(t + fi * uv.x);
   }
 
-  float fy = fract(uv.y * 1.1);
-  float shape = smoothstep(0.0, 0.55, fy) * (1.0 - smoothstep(0.45, 1.0, fy));
-  float mixer = smoothstep(0.25, 0.75, valueNoise(uv * 2.0));
+  float line = abs(fract(uv.y * 2.2 + uv.x * 0.35) - 0.5);
+  float contour = 1.0 - smoothstep(0.05, 0.16, line);
+  float fill = smoothstep(0.3, 0.7, valueNoise(uv * 1.5 - t));
 
-  vec3 stripe = mix(ORCHID, GROUND, mixer);
-  return mix(BLACK, stripe, shape * 0.9);
+  vec3 ink = mix(INK, VERMILION, fill * 0.55);
+  return mix(ink, mix(GROUND, MUSTARD, fill), contour);
 }
 
 void main() {
