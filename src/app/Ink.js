@@ -48,8 +48,22 @@ export default class Ink {
     this.last = { x: px, y: py };
   }
 
+  burst(now) {
+    for (const click of this.pointer.clicks) {
+      for (let i = 0; i < 14; i++) {
+        const angle = (i / 14) * Math.PI * 2;
+        const reach = 60 + (i % 3) * 40;
+        this.addStamp(click.x + Math.cos(angle) * reach, click.y + Math.sin(angle) * reach, now);
+      }
+      this.addStamp(click.x, click.y, now);
+    }
+
+    this.pointer.clicks.length = 0;
+  }
+
   update(now) {
     this.trace(now);
+    this.burst(now);
     this.stamps = this.stamps.filter((stamp) => now - stamp.born < this.life);
 
     const ctx = this.ctx;

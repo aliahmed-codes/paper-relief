@@ -5,11 +5,16 @@ export default class Pointer {
     this.px = window.innerWidth / 2;
     this.py = window.innerHeight / 2;
     this.moved = false;
+    this.clicks = [];
 
     window.addEventListener("pointermove", (event) => {
       this.px = event.clientX;
       this.py = event.clientY;
       this.moved = true;
+    });
+
+    window.addEventListener("pointerdown", (event) => {
+      this.clicks.push({ x: event.clientX, y: event.clientY });
     });
   }
 
