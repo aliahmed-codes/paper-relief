@@ -1,9 +1,9 @@
 :root {
-  --paper: #fcfaf5;
-  --ink: #0f0e0c;
-  --accent: #e154ff;
-  --shade: #f1eee6;
-  --line: rgba(15, 14, 12, 0.14);
+  --paper: #efe6d3;
+  --ink: #14213d;
+  --accent: #e63b2e;
+  --shade: #f7f1e3;
+  --line: rgba(20, 33, 61, 0.2);
   --gutter: clamp(20px, 5vw, 72px);
 }
 
@@ -80,34 +80,35 @@ html.gl .page {
 
 .hero {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(24px, 5vw, 72px);
+  align-items: end;
   padding: 120px 0 var(--gutter);
 
   &__title {
-    font-size: clamp(2.8rem, 9vw, 8.5rem);
-    font-weight: 800;
-    line-height: 0.95;
-    letter-spacing: -0.04em;
+    font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    font-size: clamp(3.2rem, 9.5vw, 9rem);
+    font-weight: 700;
+    font-style: italic;
+    line-height: 0.92;
+    letter-spacing: -0.03em;
   }
 
   &__lead {
-    max-width: 480px;
-    margin: 28px 0 40px;
-    font-size: 1.1rem;
-    line-height: 1.6;
+    max-width: 420px;
+    margin-top: 28px;
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+
+  &__panel {
+    height: min(72vh, 640px);
   }
 }
 
-.band {
-  width: 100%;
-  height: clamp(180px, 32vh, 340px);
-}
-
-.seam {
-  height: 220px;
-  margin: 0 calc(var(--gutter) * -1);
+.ribbon {
+  height: 120px;
 }
 
 .panel {
@@ -115,8 +116,9 @@ html.gl .page {
 
   h2 {
     font-size: clamp(2rem, 5vw, 4rem);
-    font-weight: 800;
-    letter-spacing: -0.03em;
+    font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
     line-height: 1;
     margin-bottom: 48px;
     max-width: 14ch;
@@ -131,28 +133,37 @@ html.gl .page {
 
 .card {
   padding: 28px;
-  min-height: 280px;
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 18px;
+  min-height: 300px;
+  background: var(--shade);
+  border: 1.5px solid var(--ink);
+  border-radius: 4px;
+  box-shadow: 6px 6px 0 var(--ink);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 12px;
 
-  &__index {
-    font-size: 0.8rem;
+  &__tag {
+    font-size: 0.75rem;
     font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     color: var(--accent);
   }
 
   h3 {
-    font-size: 1.8rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
+    font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: auto;
   }
 
   p {
     line-height: 1.5;
+  }
+
+  &__price {
+    font-weight: 600;
+    font-size: 1.1rem;
   }
 }
 
@@ -170,9 +181,21 @@ html.gl .page {
 
 .mail {
   font-size: clamp(1.6rem, 5vw, 4rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  border-bottom: 3px solid currentColor;
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  font-style: italic;
+  font-weight: 700;
+  border-bottom: 3px solid var(--accent);
+}
+
+@media (max-width: 800px) {
+  .hero {
+    grid-template-columns: 1fr;
+    align-items: start;
+
+    &__panel {
+      height: 38vh;
+    }
+  }
 }
 
 .footer {

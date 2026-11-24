@@ -1,53 +1,57 @@
 canvas#stage.stage
 
 header.nav
-  a.nav__logo(href="/") Folio.
+  a.nav__logo(href="/") Marginalia
   nav.nav__links
-    a(href="#work") Work
-    a(href="#notes") Notes
+    a(href="#collection") Collection
+    a(href="#story") Story
     a(href="#contact") Contact
 
 main.page
   section.hero
-    p.eyebrow Paper shaders / practice
-    h1.hero__title
-      | Move your cursor.
-      br
-      | Crease the page.
-    p.hero__lead Folds and crumples are hiding under this page. Wherever the pointer passes, the paper lifts, bends the words and catches the light.
-    .band(data-warp)
+    .hero__copy
+      p.eyebrow Stationery studio, Lahore
+      h1.hero__title
+        | Touch
+        br
+        | the paper.
+      p.hero__lead Letterpress notebooks and cards made for people who still write things down. Drag across the page, or click, and it creases.
+    .hero__panel(data-warp)
 
-  section.panel#work
-    p.eyebrow 01 — Work
-    h2 Quiet layouts, loud surfaces
+  section.panel#collection
+    p.eyebrow The collection
+    h2 Three things to write in
     .cards
       article.card
-        span.card__index 01
-        h3 Atlas
-        p Editorial site for a printing studio.
+        span.card__tag No. 01
+        h3 Field Book
+        p Stitched binding, 96 pages of cotton stock.
+        span.card__price £18
       article.card
-        span.card__index 02
-        h3 Fold
-        p Packaging identity and web launch.
+        span.card__tag No. 02
+        h3 Pocket Letters
+        p A set of twelve folded cards with envelopes.
+        span.card__price £14
       article.card
-        span.card__index 03
-        h3 Grain
-        p Motion system for a paper brand.
+        span.card__tag No. 03
+        h3 Desk Pad
+        p Tear-off weekly planner, printed in two inks.
+        span.card__price £22
 
-  .seam(data-warp)
+  .ribbon(data-warp)
 
-  section.panel#notes
-    p.eyebrow 02 — Notes
-    h2 How it works
+  section.panel#story
+    p.eyebrow Story
+    h2 Made slowly, on purpose
     ul.list
-      li The whole page is drawn into a texture once.
-      li A trail records where the pointer has been and fades it out.
-      li A fragment shader builds folds and crumples as a height field.
-      li Its normals bend the page texture and light it, only where the trail is.
+      li Every sheet is cut and folded by hand in small batches.
+      li We print with two inks only, so each colour has to earn its place.
+      li Nothing ships until it has been creased, flattened and checked.
+      li The paper is sourced from mills that reuse their water.
 
   section.panel#contact
-    p.eyebrow 03 — Contact
-    h2 Say hello
+    p.eyebrow Contact
+    h2 Order or say hello
     a.mail(href="mailto:hello@example.com") hello@example.com
 
   include ../includes/footer.pug
